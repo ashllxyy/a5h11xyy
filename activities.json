@@ -1,0 +1,119 @@
+[
+    {
+        "type": "project",
+        "icon": "code",
+        "title": "developed portfolio",
+        "date": "April, 2026",
+        "read-time": "2 min read",
+        "id": "project-portfolio",
+        "details": {
+            "title": "Portfolio",
+            "attachments": [],
+            "content": "<span class=\"bold\">A minimal, interaction-focused developer portfolio.</span><br><br>Built with <span class=\"bold\">HTML, CSS, and JavaScript</span>, this portfolio features a clean design and smooth animations. It showcases my projects, work experience, and achievements in an engaging way.<br><br>I took inspiration from games like <span class=\"bold\">Dead Space 2</span> and <span class=\"bold\">Tom Clancy’s The Division</span>. I’m really into microinteractions—small, subtle details that make interfaces feel alive without being distracting.",
+            "images": []
+        }
+    },
+    {
+        "type": "work experience",
+        "icon": "briefcase",
+        "title": "interned at kenvue solutions india",
+        "location": "Bangalore",
+        "date": "May, 2025",
+        "id": "work-kenvue",
+        "details": {
+            "title": "Kenvue",
+            "attachments": [],
+            "images": []
+        }
+    },
+    {
+        "type": "project",
+        "icon": "code",
+        "title": "developed nfpay",
+        "location": "Trichy",
+        "date": "February, 2025",
+        "id": "project-nfpay",
+        "details": {
+            "title": "nfpay",
+            "attachments": [],
+            "images": []
+        }
+    },
+    {
+        "type": "project",
+        "icon": "code",
+        "title": "developed jeevan healthcare",
+        "location": "Goa",
+        "date": "December, 2024",
+        "id": "project-jeevan",
+        "details": {
+            "title": "jeevan",
+            "attachments": [],
+            "images": []
+        }
+    },
+    {
+        "type": "project",
+        "icon": "code",
+        "title": "developed photocobra",
+        "location": "Algeria",
+        "date": "November, 2024",
+        "id": "project-photocobra",
+        "details": {
+            "title": "photocobra",
+            "attachments": [],
+            "images": []
+        }
+    },
+    {
+        "type": "achievement",
+        "icon": "trophy",
+        "title": "won runner up at tri-nit hack",
+        "location": "Trichy",
+        "date": "May, 2024",
+        "id": "achievement-tri-nit-hack",
+        "details": {
+            "title": "tri-nit",
+            "attachments": [],
+            "images": []
+        }
+    },
+    {
+        "type": "work",
+        "icon": "briefcase",
+        "title": "interned at r&c nitt",
+        "location": "Trichy",
+        "date": "March, 2024",
+        "id": "work-rnc",
+        "details": {
+            "title": "r&c nitt",
+            "attachments": [],
+            "images": []
+        }
+    },
+    {
+        "type": "work",
+        "icon": "briefcase",
+        "title": "interned at code inbound llp",
+        "location": "New Delhi",
+        "date": "December, 2023",
+        "id": "work-code-inbound",
+        "details": {
+            "title": "code inbound",
+            "attachments": [],
+            "images": []
+        }
+    },
+    {
+        "type": "project",
+        "icon": "code",
+        "title": "developed clip",
+        "date": "March, 2023",
+        "id": "project-clip",
+        "details": {
+            "title": "CLIP",
+            "attachments": [],
+            "images": []
+        }
+    }
+]
