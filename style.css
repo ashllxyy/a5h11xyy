@@ -157,7 +157,7 @@ h1 {
 }
 
 .item:hover {
-  transform: translateY(-2px) translateX(2px); /* subtle lift */
+  transform: translateY(-2px) translateX(2px);
   background-color: rgba(255, 255, 255, 0.05);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
