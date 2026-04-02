@@ -14,16 +14,18 @@
         }
     },
     {
-        "type": "work experience",
+        "type": "experience",
         "icon": "briefcase",
         "title": "interned at kenvue solutions india",
         "location": "Bangalore",
         "date": "May, 2025",
+        "read-time": "3 min read",
         "id": "work-kenvue",
         "details": {
             "title": "Kenvue",
             "attachments": [],
-            "images": []
+            "images": [],
+            "content": "<span class=\"bold\">interned at kenvue solutions india - bangalore</span><br><br>I joined <span class=\"bold\">Kenvue Solutions India</span> as an intern, initially starting with the frontend since it was a good entry point. Over time, as I got more comfortable and earned trust within the team, I gradually took on backend work as well.<br><br>Most of my work went into building an observability platform that streams Kafka logs and helps teams monitor the health and performance of their services. It was something that other engineers would rely on day-to-day, which made the work feel meaningful.<br><br>A big chunk of my time was spent on <span class=\"bold\">optimization</span>. A lot of the existing code wasn’t very efficient, so I worked on improving performance and making things more reliable. It wasn’t always straightforward, but I learned a lot by digging through and refining what was already there.<br><br>I also built parts of the UI using <span class=\"bold\">Next.js</span> and <span class=\"bold\">SWR</span>, and worked on backend services with <span class=\"bold\">FastAPI</span> and <span class=\"bold\">PostgreSQL</span>. On the side, I contributed to improving code quality with <span class=\"bold\">SonarQube</span> and helped automate workflows using <span class=\"bold\">Jenkins</span>.<br><br>Overall, it was a structured corporate environment, but my team made a huge difference. They were supportive, gave me room to grow, and made the whole experience genuinely enjoyable."
         }
     },
     {
@@ -79,7 +81,7 @@
         }
     },
     {
-        "type": "work",
+        "type": "experience",
         "icon": "briefcase",
         "title": "interned at r&c nitt",
         "location": "Trichy",
@@ -92,7 +94,7 @@
         }
     },
     {
-        "type": "work",
+        "type": "experience",
         "icon": "briefcase",
         "title": "interned at code inbound llp",
         "location": "New Delhi",
