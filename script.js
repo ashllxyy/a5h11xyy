@@ -10,6 +10,15 @@ const myAtropos = Atropos({
 
 const allTabGroups = document.querySelectorAll('.tabs');
 
+window.addEventListener('load', () => {
+    const home = document.getElementById('scene-home');
+    if (!home) return;
+
+    requestAnimationFrame(() => {
+        animateScene(home);
+    });
+});
+
 allTabGroups.forEach(tabsContainer => {
     const tabs = tabsContainer.querySelectorAll('.tab');
     const underline = tabsContainer.querySelector('.underline');
@@ -54,6 +63,7 @@ const loadActivities = async () => {
     container.innerHTML = ACTIVITIES.map(item => {
         return `
         <div 
+            data-animate
             class="hflex activity-item align-center primary gap-2"
             data-id="${item.id}"
         >
@@ -96,15 +106,38 @@ const setupItemClicks = () => {
     });
 }
 
+const animateScene = (scene) => {
+    const items = scene.querySelectorAll('[data-animate]');
+
+    items.forEach((el, index) => {
+        el.style.transitionDelay = `${index * 50}ms`;
+    });
+
+    scene.classList.add('animate-in');
+};
+
+const animateSceneOut = (scene) => {
+    const items = Array.from(scene.querySelectorAll('[data-animate]'));
+
+    items.reverse().forEach((el, index) => {
+        el.style.transitionDelay = `${index * 40}ms`;
+    });
+
+    scene.classList.add('animate-out');
+};
+
 const switchScene = (currentId, nextId) => {
     if (currentId === nextId) return;
 
     const current = document.getElementById(currentId);
     const next = document.getElementById(nextId);
 
+    animateSceneOut(current);
     current.classList.add('exit');
 
     setTimeout(() => {
+        resetSceneAnimations(current);
+
         current.classList.remove('active', 'exit');
 
         if (nextId === 'scene-home' && currentId !== 'scene-home') {
@@ -115,6 +148,10 @@ const switchScene = (currentId, nextId) => {
 
         next.getBoundingClientRect();
 
+        requestAnimationFrame(() => {
+            animateScene(next);
+        });
+
         next.classList.add('enter');
 
         setTimeout(() => {
@@ -123,6 +160,16 @@ const switchScene = (currentId, nextId) => {
 
     }, 400);
 }
+
+const resetSceneAnimations = (scene) => {
+    const items = scene.querySelectorAll('[data-animate]');
+
+    items.forEach(el => {
+        el.style.transitionDelay = '0ms';
+    });
+
+    scene.classList.remove('animate-in', 'animate-out');
+};
 
 const openDynamicScene = (data) => {
     const sceneRoot = document.querySelector('.scene-root');
@@ -133,21 +180,23 @@ const openDynamicScene = (data) => {
     const details = data.details || {};
 
     const existing = document.getElementById(sceneId);
-    if (existing) existing.remove();
-
+    if (existing) {
+        switchScene(current.id, sceneId);
+        return;
+    }
     const newScene = document.createElement('div');
     newScene.className = 'scene';
     newScene.id = sceneId;
 
-    newScene.innerHTML = 
-    `
+    newScene.innerHTML =
+        `
         <div class="container">
             <div class="vflex">
                 <i data-lucide="${data.icon}" class="icon title-icon"></i>
                 <h1>${details.title} <span class="sub-heading">[${data.type}]</span></h1>
                 <div class="divider"></div>
                 <span class="project-read-details"><span class="bold">${data.date} </span> | ${data['read-time'] || '1 min read'}</span>
-                <p class="project-content">${details.content || "Coming soon"}</p>
+                <div class="project-content">${details.content || "Coming soon"}</div>
                 <div class="divider"></div>
                 <div class="hflex back-btn">
                     <i data-lucide="arrow-left" class="back-btn-icon"></i>

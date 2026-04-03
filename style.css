@@ -239,7 +239,7 @@ h1 {
 }
 
 .project-item:hover {
-  transform: translateY(-2px) translateX(2px); /* subtle lift */
+  transform: translateY(-2px) translateX(2px);
   background-color: rgba(255, 255, 255, 0.064);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
   color: white;
@@ -384,4 +384,29 @@ h1 {
 
 .title-icon {
   margin-bottom: 10px;
+}
+
+[data-animate] {
+  opacity: 0;
+  transform: translateY(12px) translateX(24px) scale(0.98);
+  filter: blur(6px);
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+}
+
+.scene.animate-in [data-animate] {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0) scale(1);
+}
+
+.scene.animate-out [data-animate] {
+  opacity: 0;
+  transform: translateY(10px) scale(0.98);
+  filter: blur(6px);
+}
+
+.para {
+  margin-bottom: 12px;
 }
