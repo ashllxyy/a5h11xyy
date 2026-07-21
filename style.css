@@ -71,28 +71,23 @@ h1 {
 }
 
 .tabs {
-  margin: 20px 0;
-  display: flex;
-  gap: 100px;
-  color: rgb(225, 225, 225);
   font-size: 0.7rem;
-}
-
-.tabs {
+  margin: 20px 0;
+  color: rgb(225, 225, 225);
   position: relative;
   display: flex;
-  gap: 32px;
-  padding-bottom: 8px;
+  gap: 8px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .tab {
   position: relative;
-  font-size: 10px;
+  font-size: 0.7rem;
   letter-spacing: 2px;
   color: rgba(255, 255, 255, 0.6);
   cursor: pointer;
   transition: color 0.5s ease;
+  padding: 10px 5px;
 }
 
 .content {
@@ -386,25 +381,36 @@ h1 {
   margin-bottom: 10px;
 }
 
-[data-animate] {
+[data-animate],
+[data-animate-1],
+[data-animate-2],
+[data-animate-3] {
   opacity: 0;
   transform: translateY(12px) translateX(24px) scale(0.98);
   filter: blur(6px);
+  background-color: red;
   transition:
     opacity 0.4s ease,
-    transform 0.4s ease;
+    transform 0.4s ease,
+    filter 0.4s ease;
 }
 
-.scene.animate-in [data-animate] {
+.scene.animate-in [data-animate],
+.scene.animate-in [data-animate-1],
+.scene.animate-in [data-animate-2],
+.scene.animate-in [data-animate-3] {
   opacity: 1;
   filter: blur(0);
   transform: translateY(0) scale(1);
 }
 
-.scene.animate-out [data-animate] {
+.scene.animate-out [data-animate],
+.scene.animate-out [data-animate-1],
+.scene.animate-out [data-animate-2],
+.scene.animate-out [data-animate-3] {
   opacity: 0;
   transform: translateY(10px) scale(0.98);
-  filter: blur(6px);
+  filter: blur(2px);
 }
 
 .para {

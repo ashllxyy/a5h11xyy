@@ -1,0 +1,25 @@
+{
+  "name": "a5h11xyy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ashllxyy/a5h11xyy.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ashllxyy/a5h11xyy/issues"
+  },
+  "homepage": "https://github.com/ashllxyy/a5h11xyy#readme",
+  "devDependencies": {
+    "vite": "^8.1.5"
+  }
+}
