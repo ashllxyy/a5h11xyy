@@ -63,7 +63,7 @@ const loadActivities = async () => {
     container.innerHTML = ACTIVITIES.map(item => {
         return `
         <div 
-            data-animate
+            data-animate-1
             class="hflex activity-item align-center primary gap-2"
             data-id="${item.id}"
         >
@@ -106,25 +106,85 @@ const setupItemClicks = () => {
     });
 }
 
-const animateScene = (scene) => {
-    const items = scene.querySelectorAll('[data-animate]');
+// ==========================================
+// GROUPED ANIMATION SYSTEM CONFIG & LOGIC
+// ==========================================
 
-    items.forEach((el, index) => {
-        el.style.transitionDelay = `${index * 50}ms`;
+const ANIMATE_CONFIG = {
+    'default': { limit: 10, stepMs: 100 },
+    '1': { limit: 10, stepMs: 100 },
+    '2': { limit: 4, stepMs: 200 },
+};
+
+// Finds and categorizes all animated elements into groups based on data attributes
+const getAnimatedGroups = (scene) => {
+    const allElements = scene.querySelectorAll('*');
+    const groups = {};
+
+    allElements.forEach(el => {
+        for (const attr of el.attributes) {
+            if (attr.name === 'data-animate' || attr.name.startsWith('data-animate-')) {
+                const groupKey = attr.name === 'data-animate' ? 'default' : attr.name.replace('data-animate-', '');
+                
+                if (!groups[groupKey]) groups[groupKey] = [];
+                groups[groupKey].push(el);
+                break;
+            }
+        }
+    });
+
+    return groups;
+};
+
+const animateScene = (scene) => {
+    const groups = getAnimatedGroups(scene);
+
+    Object.keys(groups).forEach(groupKey => {
+        const items = groups[groupKey];
+        const config = ANIMATE_CONFIG[groupKey] || ANIMATE_CONFIG['default'];
+        const limit = config.limit ?? 10;
+        const stepMs = config.stepMs ?? 200;
+
+        items.forEach((el, index) => {
+            const staggerIndex = Math.min(index, limit - 1);
+            el.style.transitionDelay = `${staggerIndex * stepMs}ms`;
+        });
     });
 
     scene.classList.add('animate-in');
 };
 
 const animateSceneOut = (scene) => {
-    const items = Array.from(scene.querySelectorAll('[data-animate]'));
+    const groups = getAnimatedGroups(scene);
 
-    items.reverse().forEach((el, index) => {
-        el.style.transitionDelay = `${index * 40}ms`;
+    Object.keys(groups).forEach(groupKey => {
+        const items = Array.from(groups[groupKey]);
+        const config = ANIMATE_CONFIG[groupKey] || ANIMATE_CONFIG['default'];
+        const limit = config.limit ?? 10;
+        const stepMs = config.stepMs ?? 150; // slightly faster exit step
+
+        items.reverse().forEach((el, index) => {
+            const staggerIndex = Math.min(index, limit - 1);
+            el.style.transitionDelay = `${staggerIndex * stepMs}ms`;
+        });
     });
 
     scene.classList.add('animate-out');
 };
+
+const resetSceneAnimations = (scene) => {
+    const groups = getAnimatedGroups(scene);
+
+    Object.values(groups).flat().forEach(el => {
+        el.style.transitionDelay = '0ms';
+    });
+
+    scene.classList.remove('animate-in', 'animate-out');
+};
+
+// ==========================================
+// SCENE SWITCHING LOGIC
+// ==========================================
 
 const switchScene = (currentId, nextId) => {
     if (currentId === nextId) return;
@@ -160,16 +220,6 @@ const switchScene = (currentId, nextId) => {
 
     }, 400);
 }
-
-const resetSceneAnimations = (scene) => {
-    const items = scene.querySelectorAll('[data-animate]');
-
-    items.forEach(el => {
-        el.style.transitionDelay = '0ms';
-    });
-
-    scene.classList.remove('animate-in', 'animate-out');
-};
 
 const openDynamicScene = (data) => {
     const sceneRoot = document.querySelector('.scene-root');

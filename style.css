@@ -388,7 +388,6 @@ h1 {
   opacity: 0;
   transform: translateY(12px) translateX(24px) scale(0.98);
   filter: blur(6px);
-  background-color: red;
   transition:
     opacity 0.4s ease,
     transform 0.4s ease,
