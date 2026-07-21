@@ -26,7 +26,7 @@
                                         <div class="activity">
                                             <div class="vflex">
                                                 <div class="tabs">
-                                                    <div class="tab active">
+                                                    <div class="tab active" data-target="tab-activities">
                                                         <span class="hflex">
                                                             <i data-lucide="activity" class="content-icon"></i>
                                                             activity
@@ -38,7 +38,7 @@
                                                             about
                                                         </span>
                                                     </div>
-                                                    <div class="tab">
+                                                    <div class="tab" data-target="tab-ethos">
                                                         <span class="hflex">
                                                             <i data-lucide="lightbulb" class="content-icon"></i>
                                                             ethos
@@ -46,8 +46,14 @@
                                                     </div>
                                                     <div class="underline"></div>
                                                 </div>
-                                                <div class="content vflex" id="activity-list">
+                                                <div id="tab-activities">
+                                                  <div class="content vflex" id="activity-list">
                                                     <!-- This is where the activities will be rendered -->
+                                                  </div>
+                                                </div>
+                                                <div id="tab-ethos">
+                                                  <div data-animate-1>Ethos Content 1</div>
+                                                  <div data-animate-1>Ethos Content 2</div>
                                                 </div>
                                             </div>
                                         </div>

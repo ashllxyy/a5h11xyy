@@ -8,16 +8,35 @@ const myAtropos = Atropos({
     rotateYMax: 7,
 });
 
+// ==========================================
+// TAB & CONTENT SWITCHING LOGIC
+// ==========================================
+
+const switchTabContent = (currentId, nextId) => {
+    const current = document.getElementById(currentId);
+    const next = document.getElementById(nextId);
+
+    if (!current || !next) return;
+
+    // 1. Animate out the current tab's items
+    animateSceneOut(current);
+
+    // 2. Wait for transition to finish
+    setTimeout(() => {
+        resetSceneAnimations(current);
+        current.style.display = 'none'; // Hide old content entirely
+
+        next.style.display = 'block'; // Unhide new content
+        next.getBoundingClientRect(); // Force browser reflow
+
+        // 3. Animate in the new tab's items
+        requestAnimationFrame(() => {
+            animateScene(next);
+        });
+    }, 400);
+};
+
 const allTabGroups = document.querySelectorAll('.tabs');
-
-window.addEventListener('load', () => {
-    const home = document.getElementById('scene-home');
-    if (!home) return;
-
-    requestAnimationFrame(() => {
-        animateScene(home);
-    });
-});
 
 allTabGroups.forEach(tabsContainer => {
     const tabs = tabsContainer.querySelectorAll('.tab');
@@ -26,22 +45,37 @@ allTabGroups.forEach(tabsContainer => {
     const moveUnderline = (el) => {
         const rect = el.getBoundingClientRect();
         const parentRect = tabsContainer.getBoundingClientRect();
-
         const padding = 8;
-
         underline.style.width = rect.width + padding + 'px';
-        underline.style.left =
-            rect.left - parentRect.left - padding / 2 + 'px';
+        underline.style.left = rect.left - parentRect.left - padding / 2 + 'px';
     }
 
     const activeTab = tabsContainer.querySelector('.tab.active');
     if (activeTab) moveUnderline(activeTab);
 
+    // Enforce initial display: none on inactive tabs to prevent visual glitches
+    tabs.forEach(tab => {
+        if (!tab.classList.contains('active') && tab.dataset.target) {
+            const targetEl = document.getElementById(tab.dataset.target);
+            if (targetEl) targetEl.style.display = 'none';
+        }
+    });
+
     tabs.forEach(tab => {
         tab.addEventListener('click', () => {
-            tabsContainer.querySelector('.tab.active')?.classList.remove('active');
+            const currentActiveTab = tabsContainer.querySelector('.tab.active');
+            if (currentActiveTab === tab) return; 
+
+            const currentTargetId = currentActiveTab?.dataset.target;
+            const nextTargetId = tab.dataset.target;
+
+            currentActiveTab?.classList.remove('active');
             tab.classList.add('active');
             moveUnderline(tab);
+
+            if (currentTargetId && nextTargetId) {
+                switchTabContent(currentTargetId, nextTargetId);
+            }
         });
     });
 
@@ -52,6 +86,10 @@ allTabGroups.forEach(tabsContainer => {
 });
 
 
+// ==========================================
+// ACTIVITIES LOADING
+// ==========================================
+
 let ACTIVITIES = [];
 
 const loadActivities = async () => {
@@ -59,6 +97,7 @@ const loadActivities = async () => {
     ACTIVITIES = await res.json();
 
     const container = document.getElementById('activity-list');
+    if (!container) return;
 
     container.innerHTML = ACTIVITIES.map(item => {
         return `
@@ -87,6 +126,14 @@ const loadActivities = async () => {
 
     lucide.createIcons();
     setupItemClicks();
+
+    // Fix: If activities load *after* the initial page load, we need to animate them manually.
+    // Check if the container is currently visible before animating.
+    if (container.offsetWidth > 0 || container.offsetHeight > 0) {
+        requestAnimationFrame(() => {
+            animateScene(container);
+        });
+    }
 };
 
 loadActivities();
@@ -97,10 +144,8 @@ const setupItemClicks = () => {
     items.forEach(item => {
         item.addEventListener('click', () => {
             const id = item.dataset.id;
-
             const data = ACTIVITIES.find(a => a.id === id);
             if (!data) return;
-
             openDynamicScene(data);
         });
     });
@@ -111,17 +156,20 @@ const setupItemClicks = () => {
 // ==========================================
 
 const ANIMATE_CONFIG = {
-    'default': { limit: 10, stepMs: 100 },
-    '1': { limit: 10, stepMs: 100 },
-    '2': { limit: 4, stepMs: 200 },
+    'default': { limit: 10, stepMs: 100 }, 
+    '1': { limit: 10, stepMs: 50 },       
+    '2': { limit: 4, stepMs: 100 },        
 };
 
-// Finds and categorizes all animated elements into groups based on data attributes
 const getAnimatedGroups = (scene) => {
     const allElements = scene.querySelectorAll('*');
     const groups = {};
 
     allElements.forEach(el => {
+        // Core Fix: Ignore elements inside hidden tabs by checking their bounding box
+        const rect = el.getBoundingClientRect();
+        if (rect.width === 0 && rect.height === 0) return;
+
         for (const attr of el.attributes) {
             if (attr.name === 'data-animate' || attr.name.startsWith('data-animate-')) {
                 const groupKey = attr.name === 'data-animate' ? 'default' : attr.name.replace('data-animate-', '');
@@ -148,10 +196,14 @@ const animateScene = (scene) => {
         items.forEach((el, index) => {
             const staggerIndex = Math.min(index, limit - 1);
             el.style.transitionDelay = `${staggerIndex * stepMs}ms`;
+            
+            // Add class directly to the element
+            requestAnimationFrame(() => {
+                el.classList.remove('animated-out');
+                el.classList.add('animated-in');
+            });
         });
     });
-
-    scene.classList.add('animate-in');
 };
 
 const animateSceneOut = (scene) => {
@@ -161,29 +213,41 @@ const animateSceneOut = (scene) => {
         const items = Array.from(groups[groupKey]);
         const config = ANIMATE_CONFIG[groupKey] || ANIMATE_CONFIG['default'];
         const limit = config.limit ?? 10;
-        const stepMs = config.stepMs ?? 150; // slightly faster exit step
+        const stepMs = config.stepMs ?? 150; 
 
         items.reverse().forEach((el, index) => {
             const staggerIndex = Math.min(index, limit - 1);
             el.style.transitionDelay = `${staggerIndex * stepMs}ms`;
+            
+            // Apply exit class directly to the element
+            requestAnimationFrame(() => {
+                el.classList.remove('animated-in');
+                el.classList.add('animated-out');
+            });
         });
     });
-
-    scene.classList.add('animate-out');
 };
 
 const resetSceneAnimations = (scene) => {
     const groups = getAnimatedGroups(scene);
-
     Object.values(groups).flat().forEach(el => {
         el.style.transitionDelay = '0ms';
+        el.classList.remove('animated-in', 'animated-out');
     });
-
-    scene.classList.remove('animate-in', 'animate-out');
 };
 
+// Initialize home scene
+window.addEventListener('load', () => {
+    const home = document.getElementById('scene-home');
+    if (!home) return;
+
+    requestAnimationFrame(() => {
+        animateScene(home);
+    });
+});
+
 // ==========================================
-// SCENE SWITCHING LOGIC
+// SCENE SWITCHING LOGIC (For Dynamic Pages)
 // ==========================================
 
 const switchScene = (currentId, nextId) => {
@@ -197,7 +261,6 @@ const switchScene = (currentId, nextId) => {
 
     setTimeout(() => {
         resetSceneAnimations(current);
-
         current.classList.remove('active', 'exit');
 
         if (nextId === 'scene-home' && currentId !== 'scene-home') {
@@ -205,7 +268,6 @@ const switchScene = (currentId, nextId) => {
         }
 
         next.classList.add('active');
-
         next.getBoundingClientRect();
 
         requestAnimationFrame(() => {
