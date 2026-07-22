@@ -1,0 +1,41 @@
+[
+  {
+    "title": "OpenAI's CLIP",
+    "tags": [
+    {
+      "name": "personal",
+      "color": "#696125"
+    },
+    {
+      "name": "deep-learning",
+      "color": "#03553b"
+    }
+  ]
+  },
+  {
+    "title": "NFPay",
+    "tags": [
+    {
+      "name": "freelance",
+      "color": "#6d2c2c"
+    },
+    {
+      "name": "web-dev",
+      "color": "#03553b"
+    }
+  ]
+  },
+  {
+    "title": "Network Monitoring System",
+    "tags": [
+      {
+        "name": "business",
+        "color": "#4b3656"
+      },
+      {
+        "name": "backend",
+        "color": "#03553b"
+      }
+    ]
+  }
+]

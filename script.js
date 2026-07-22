@@ -101,26 +101,27 @@ const loadActivities = async () => {
 
     container.innerHTML = ACTIVITIES.map(item => {
         return `
-        <div 
-            data-animate-1
-            class="hflex activity-item align-center primary gap-2"
-            data-id="${item.id}"
-        >
-            <i data-lucide="${item.icon}" class="content-icon"></i>
-            
-            <div class="info hflex between">
-                <div class="title primary">${item.title}</div>
-                
-                <div class="date secondary">
-                    <span class="date-text">${item.date}</span>
-                    <span class="hover-hint">
-                        click 
-                        <i data-lucide="mouse-left" class="hint-icon"></i>
-                        to open
-                    </span>
-                </div>
-            </div>
-        </div>
+          <div data-animate-1>
+              <div 
+                  class="hflex activity-item align-center primary gap-2"
+                  data-id="${item.id}"
+              >
+                  <i data-lucide="${item.icon}" class="content-icon"></i>
+                  
+                  <div class="info hflex between">
+                      <div class="title primary">${item.title}</div>
+                      
+                      <div class="date secondary">
+                          <span class="date-text">${item.date}</span>
+                          <span class="hover-hint">
+                              click 
+                              <i data-lucide="mouse-left" class="hint-icon"></i>
+                              to open
+                          </span>
+                      </div>
+                  </div>
+              </div>
+          </div>
         `;
     }).join('');
 
@@ -136,7 +137,50 @@ const loadActivities = async () => {
     }
 };
 
+const loadProjects = async () => {
+    const response = await fetch("projects.json");
+    const projects = await response.json();
+
+    const container = document.getElementById("projects-list");
+
+    container.innerHTML = "";
+
+    projects.forEach(project => {
+        const tagsHtml = (project.tags || [])
+            .map(tag => `
+                <div
+                    class="project-tag"
+                    style="background: ${tag.color}; color: white;"
+                >
+                    ${tag.name}
+                </div>
+            `)
+            .join("");
+
+        container.insertAdjacentHTML(
+            "beforeend",
+            `
+            <div data-animate-2>
+                <div class="project-item vflex gap-2">
+                    <div class="project-title">
+                        <i data-lucide="circle" class="dot"></i>
+                        <span>${project.title}</span>
+                    </div>
+
+                    <div class="project-tags">
+                        ${tagsHtml}
+                    </div>
+                </div>
+            </div>
+            `
+        );
+    });
+
+    lucide.createIcons();
+}
+
 loadActivities();
+loadProjects();
 
 const setupItemClicks = () => {
     const items = document.querySelectorAll('.activity-item');
