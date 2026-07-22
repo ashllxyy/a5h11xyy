@@ -1,10 +1,10 @@
 [
   {
-    "title": "OpenAI's CLIP",
+    "title": "openai's clip",
     "tags": [
     {
       "name": "personal",
-      "color": "#696125"
+      "color": "#2d4282"
     },
     {
       "name": "deep-learning",
@@ -13,7 +13,7 @@
   ]
   },
   {
-    "title": "NFPay",
+    "title": "nfpay",
     "tags": [
     {
       "name": "freelance",
@@ -26,7 +26,7 @@
   ]
   },
   {
-    "title": "Network Monitoring System",
+    "title": "network monitoring system a a a a a a a a a",
     "tags": [
       {
         "name": "business",
@@ -34,6 +34,19 @@
       },
       {
         "name": "backend",
+        "color": "#03553b"
+      }
+    ]
+  },
+  {
+    "title": "student allocater",
+    "tags": [
+      {
+        "name": "personal",
+        "color": "#2d4282"
+      },
+      {
+        "name": "script",
         "color": "#03553b"
       }
     ]

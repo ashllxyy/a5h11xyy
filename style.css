@@ -141,7 +141,6 @@ h1 {
 .container {
   height: 70vh;
   width: calc(min(100vw - 96px, 1000px));
-  border: solid 1px red;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -248,12 +247,11 @@ h1 {
 }
 
 .activity {
-  flex: 0 0 70%;
+  flex: 7;
 }
 
 .projects {
-  border: solid 1px blue;
-  flex: 0 0 30%;
+  flex: 3;
   min-height: 0;
 }
 
@@ -283,8 +281,9 @@ h1 {
 }
 
 .project-title {
-  font-size: 0.8rem;
-  color: rgb(225, 225, 225);
+    font-size: 0.8rem;
+    color: rgb(225, 225, 225);
+    width: 100%;
 }
 
 .dot {
