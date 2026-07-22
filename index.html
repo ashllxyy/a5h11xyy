@@ -19,9 +19,11 @@
                     <div class="scene-root">
                         <div class="scene active" id="scene-home">
                             <div class="container">
-                                <i data-lucide="gamepad-2" class="icon"></i>
-                                <h1>arunesh<span class="sub-heading">[a5h//xyy]</span></h1>
-                                <div class="vflex gap-2 h-full shrink" style={{ height: "10%" }}>
+                                <div class="header">
+                                    <i data-lucide="gamepad-2" class="icon"></i>
+                                    <h1>arunesh<span class="sub-heading">[a5h//xyy]</span></h1>
+                                </div>
+                                <div class="vflex gap-2 h-full shrink">
                                     <div class="hflex gap-5 h-full shrink">
                                         <div class="activity h-full shrink">
                                             <div class="vflex h-full shrink">
@@ -46,18 +48,18 @@
                                                     </div>
                                                     <div class="underline"></div>
                                                 </div>
-                                                <div id="tab-activities" class="h-full topleft-content shrink">
+                                                <div id="tab-activities" class="tab-content">
                                                   <div class="content vflex" id="activity-list">
                                                     <!-- This is where the activities will be rendered -->
                                                   </div>
                                                 </div>
-                                                <div id="tab-ethos">
+                                                <div id="tab-ethos" class="tab-content">
                                                   <div data-animate-1>Ethos Content 1</div>
                                                   <div data-animate-1>Ethos Content 2</div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="projects">
+                                        <div class="projects vflex">
                                             <div class="tabs">
                                                 <div class="tab active">
                                                     <span class="hflex">
@@ -67,29 +69,38 @@
                                                 </div>
                                                 <div class="underline"></div>
                                             </div>
-                                            <div class="content vflex gap-2">
-                                                <div data-animate-2 class="project-item vflex gap-2">
-                                                    <div class="project-title">
+                                            <div id="tab-projects" class="tab-content">
+                                                <div class="content vflex gap-2">
+                                                    <div data-animate-2 class="project-item vflex gap-2">
+                                                      <div class="project-title">
                                                         <i data-lucide="circle" class="dot"></i>
                                                         <span>OpenAI's CLIP</span>
+                                                      </div>
+                                                      <div class="project-tag personal-project">personal</div>
                                                     </div>
-                                                    <div class="project-tag personal-project">personal</div>
-                                                </div>
-                                                <div data-animate-2 class="project-item vflex gap-2">
-                                                    <div class="project-title">
+                                                    <div data-animate-2 class="project-item vflex gap-2">
+                                                        <div class="project-title">
+                                                            <i data-lucide="circle" class="dot"></i>
+                                                            <span>OpenAI's CLIP</span>
+                                                        </div>
+                                                        <div class="project-tag personal-project">personal</div>
+                                                    </div>
+                                                    <div data-animate-2 class="project-item vflex gap-2">
+                                                        <div class="project-title">
+                                                            <i data-lucide="circle" class="dot"></i>
+                                                            <span>NFPay</span>
+                                                        </div>
+                                                        <div class="project-tag freelance-project">freelance</div>
+                                                    </div>
+                                                    <div data-animate-2 class="project-item vflex gap-2">
+                                                      <div class="project-title">
                                                         <i data-lucide="circle" class="dot"></i>
-                                                        <span>NFPay</span>
+                                                        <span>Network Monitoring System</span>
+                                                      </div>
+                                                      <div class="project-tag business-project">business</div>
                                                     </div>
-                                                    <div class="project-tag freelance-project">freelance</div>
                                                 </div>
-                                                <div data-animate-2 class="project-item vflex gap-2">
-                                                  <div class="project-title">
-                                                    <i data-lucide="circle" class="dot"></i>
-                                                    <span>Network Monitoring System</span>
-                                                  </div>
-                                                  <div class="project-tag business-project">business</div>
-                                                </div>
-                                            </div>
+                                             </div>
                                         </div>
                                     </div>
                                     <div class="blogs">
