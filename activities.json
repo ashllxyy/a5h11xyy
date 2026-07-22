@@ -29,6 +29,240 @@
         }
     },
     {
+      "type": "project",
+      "icon": "code",
+      "title": "developed nfpay",
+      "location": "Trichy",
+      "date": "February, 2025",
+      "id": "project-nfpay",
+      "details": {
+        "title": "nfpay",
+        "attachments": [],
+        "images": []
+      }
+    },
+    {
+      "type": "project",
+      "icon": "code",
+      "title": "developed jeevan healthcare",
+      "location": "Goa",
+      "date": "December, 2024",
+      "id": "project-jeevan",
+      "details": {
+        "title": "jeevan",
+        "attachments": [],
+        "images": []
+      }
+    },
+    {
+      "type": "project",
+      "icon": "code",
+      "title": "developed photocobra",
+      "location": "Algeria",
+      "date": "November, 2024",
+      "id": "project-photocobra",
+      "details": {
+        "title": "photocobra",
+        "attachments": [],
+        "images": []
+      }
+    },
+    {
+      "type": "achievement",
+      "icon": "trophy",
+      "title": "won runner up at tri-nit hack",
+      "location": "Trichy",
+      "date": "May, 2024",
+      "id": "achievement-tri-nit-hack",
+      "details": {
+        "title": "tri-nit",
+        "attachments": [],
+        "images": []
+      }
+    },
+    {
+      "type": "experience",
+      "icon": "briefcase",
+      "title": "interned at r&c nitt",
+      "location": "Trichy",
+      "date": "March, 2024",
+      "id": "work-rnc",
+      "details": {
+        "title": "r&c nitt",
+        "attachments": [],
+        "images": []
+      }
+    },
+    {
+      "type": "experience",
+      "icon": "briefcase",
+      "title": "interned at code inbound llp",
+      "location": "New Delhi",
+      "date": "December, 2023",
+      "id": "work-code-inbound",
+      "details": {
+        "title": "code inbound",
+        "attachments": [],
+        "images": []
+      }
+    },
+    {
+      "type": "project",
+      "icon": "code",
+      "title": "developed nfpay",
+      "location": "Trichy",
+      "date": "February, 2025",
+      "id": "project-nfpay",
+      "details": {
+        "title": "nfpay",
+        "attachments": [],
+        "images": []
+      }
+    },
+    {
+      "type": "project",
+      "icon": "code",
+      "title": "developed jeevan healthcare",
+      "location": "Goa",
+      "date": "December, 2024",
+      "id": "project-jeevan",
+      "details": {
+        "title": "jeevan",
+        "attachments": [],
+        "images": []
+      }
+    },
+    {
+      "type": "project",
+      "icon": "code",
+      "title": "developed photocobra",
+      "location": "Algeria",
+      "date": "November, 2024",
+      "id": "project-photocobra",
+      "details": {
+        "title": "photocobra",
+        "attachments": [],
+        "images": []
+      }
+    },
+    {
+      "type": "achievement",
+      "icon": "trophy",
+      "title": "won runner up at tri-nit hack",
+      "location": "Trichy",
+      "date": "May, 2024",
+      "id": "achievement-tri-nit-hack",
+      "details": {
+        "title": "tri-nit",
+        "attachments": [],
+        "images": []
+      }
+    },
+    {
+      "type": "experience",
+      "icon": "briefcase",
+      "title": "interned at r&c nitt",
+      "location": "Trichy",
+      "date": "March, 2024",
+      "id": "work-rnc",
+      "details": {
+        "title": "r&c nitt",
+        "attachments": [],
+        "images": []
+      }
+    },
+    {
+      "type": "experience",
+      "icon": "briefcase",
+      "title": "interned at code inbound llp",
+      "location": "New Delhi",
+      "date": "December, 2023",
+      "id": "work-code-inbound",
+      "details": {
+        "title": "code inbound",
+        "attachments": [],
+        "images": []
+      }
+    },
+    {
+      "type": "project",
+      "icon": "code",
+      "title": "developed nfpay",
+      "location": "Trichy",
+      "date": "February, 2025",
+      "id": "project-nfpay",
+      "details": {
+        "title": "nfpay",
+        "attachments": [],
+        "images": []
+      }
+    },
+    {
+      "type": "project",
+      "icon": "code",
+      "title": "developed jeevan healthcare",
+      "location": "Goa",
+      "date": "December, 2024",
+      "id": "project-jeevan",
+      "details": {
+        "title": "jeevan",
+        "attachments": [],
+        "images": []
+      }
+    },
+    {
+      "type": "project",
+      "icon": "code",
+      "title": "developed photocobra",
+      "location": "Algeria",
+      "date": "November, 2024",
+      "id": "project-photocobra",
+      "details": {
+        "title": "photocobra",
+        "attachments": [],
+        "images": []
+      }
+    },
+    {
+      "type": "achievement",
+      "icon": "trophy",
+      "title": "won runner up at tri-nit hack",
+      "location": "Trichy",
+      "date": "May, 2024",
+      "id": "achievement-tri-nit-hack",
+      "details": {
+        "title": "tri-nit",
+        "attachments": [],
+        "images": []
+      }
+    },
+    {
+      "type": "experience",
+      "icon": "briefcase",
+      "title": "interned at r&c nitt",
+      "location": "Trichy",
+      "date": "March, 2024",
+      "id": "work-rnc",
+      "details": {
+        "title": "r&c nitt",
+        "attachments": [],
+        "images": []
+      }
+    },
+    {
+      "type": "experience",
+      "icon": "briefcase",
+      "title": "interned at code inbound llp",
+      "location": "New Delhi",
+      "date": "December, 2023",
+      "id": "work-code-inbound",
+      "details": {
+        "title": "code inbound",
+        "attachments": [],
+        "images": []
+      }
+    },
+    {
         "type": "project",
         "icon": "code",
         "title": "developed nfpay",

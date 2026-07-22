@@ -208,7 +208,7 @@ const setupItemClicks = () => {
 
 const ANIMATE_CONFIG = {
     'default': { limit: 10, stepMs: 100 }, 
-    '1': { limit: 10, stepMs: 50 },       
+    '1': { limit: 30, stepMs: 50 },       
     '2': { limit: 4, stepMs: 100 },        
 };
 
