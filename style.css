@@ -86,6 +86,26 @@ h1 {
   min-height: 0;
   overflow-y: auto;
   overflow-x: hidden;
+
+  scrollbar-width: thin;
+  scrollbar-color: #666 #333;
+}
+
+.tab-content::-webkit-scrollbar {
+  width: 1px;
+}
+
+.tab-content::-webkit-scrollbar-track {
+  background: #333;
+}
+
+.tab-content::-webkit-scrollbar-thumb {
+  background: #666;
+  border-radius: 999px;
+}
+
+.tab-content::-webkit-scrollbar-thumb:hover {
+  background: #666;
 }
 
 .blogs > .tabs {
@@ -144,17 +164,6 @@ h1 {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-}
-
-.topleft-content {
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding-right: 5px;
-}
-
-.topright-content {
-  overflow-x: hidden;
-  overflow-y: auto;
 }
 
 .vflex {
@@ -328,7 +337,7 @@ h1 {
   opacity: 0;
   transition: opacity 0.2s ease;
 
-  color: rgba(255, 255, 255, 0.6);
+  color: white;
   font-size: 12px;
   white-space: nowrap;
 }
@@ -398,7 +407,7 @@ h1 {
 }
 
 .project-content {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   color: rgb(171, 171, 171);
 }
 
@@ -418,7 +427,7 @@ h1 {
 }
 
 .title-icon {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 [data-animate],

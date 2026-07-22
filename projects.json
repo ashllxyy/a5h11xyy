@@ -2,31 +2,69 @@
   {
     "title": "openai's clip",
     "tags": [
+      {
+        "name": "personal",
+        "color": "#2d4282"
+      },
+      {
+        "name": "deep-learning",
+        "color": "#03553b"
+      }
+    ]
+  },
+  {
+    "title": "dotfiles",
+    "tags": [
     {
       "name": "personal",
       "color": "#2d4282"
     },
     {
-      "name": "deep-learning",
-      "color": "#03553b"
+      "name": "lua",
+      "color": "#6a1b98"
+    },
+    {
+      "name": "linux",
+      "color": "#111111"
     }
   ]
   },
   {
     "title": "nfpay",
     "tags": [
+      {
+        "name": "freelance",
+        "color": "#6d2c2c"
+      },
+      {
+        "name": "app-dev",
+        "color": "#03553b"
+      },
+      {
+        "name": "flutter",
+        "color": "#1b7398"
+      }
+    ]
+  },
+  {
+    "title": "jeevan healthcare",
+    "tags": [
     {
       "name": "freelance",
       "color": "#6d2c2c"
     },
     {
-      "name": "web-dev",
+      "name": "app-dev",
       "color": "#03553b"
+    },
+    {
+      "name": "react-native",
+      "color": "#985e1b"
     }
   ]
   },
   {
-    "title": "network monitoring system a a a a a a a a a",
+    "title": "network monitoring system",
     "tags": [
       {
         "name": "business",
@@ -46,7 +84,7 @@
         "color": "#2d4282"
       },
       {
-        "name": "script",
+        "name": "python",
         "color": "#03553b"
       }
     ]

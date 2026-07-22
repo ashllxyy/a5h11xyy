@@ -177,6 +177,13 @@ const loadProjects = async () => {
     });
 
     lucide.createIcons();
+    setupItemClicks();
+
+    if (container.offsetWidth > 0 || container.offsetHeight > 0) {
+        requestAnimationFrame(() => {
+            animateScene(container);
+        });
+    }
 }
 
 loadActivities();
@@ -347,10 +354,12 @@ const openDynamicScene = (data) => {
     newScene.innerHTML =
         `
         <div class="container">
-            <div class="vflex">
-                <i data-lucide="${data.icon}" class="icon title-icon"></i>
+            <div class="header">
+                <i data-lucide="${data.icon}" class="icon"></i>
                 <h1>${details.title} <span class="sub-heading">[${data.type}]</span></h1>
                 <div class="divider"></div>
+            </div>
+            <div class="vflex">
                 <span class="project-read-details"><span class="bold">${data.date} </span> | ${data['read-time'] || '1 min read'}</span>
                 <div class="project-content">${details.content || "Coming soon"}</div>
                 <div class="divider"></div>
