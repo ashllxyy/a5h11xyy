@@ -89,6 +89,12 @@ const switchTabContent = (currentId, nextId) => {
     performExitAnimation(current, () => {
         current.style.display = 'none'; 
         next.style.display = 'block'; 
+
+        if (nextId === 'tab-activities' && activityLenis) {
+            activityLenis.resize();
+        } else if (nextId === 'tab-projects' && projectsLenis) {
+            projectsLenis.resize();
+        }
     });
 };
 
@@ -140,6 +146,16 @@ allTabGroups.forEach(tabsContainer => {
     });
 });
 
+let activityLenis;
+let projectsLenis;
+
+function raf(time) {
+    if (activityLenis) activityLenis.raf(time);
+    if (projectsLenis) projectsLenis.raf(time);
+    requestAnimationFrame(raf);
+}
+requestAnimationFrame(raf);
+
 const loadActivities = async () => {
     const res = await fetch('activities.json');
     const activities = await res.json();
@@ -147,7 +163,7 @@ const loadActivities = async () => {
     const container = document.getElementById('activity-list');
     if (!container) return;
 
-    container.innerHTML = activities.map(item => {
+    const activitiesHtml = activities.map(item => {
         return `
           <div data-animate-1>
               <div class="hflex activity-item align-center primary gap-2" data-id="${item.id}">
@@ -164,9 +180,19 @@ const loadActivities = async () => {
         `;
     }).join('');
 
+    container.innerHTML = `<div class="activity-scroll-content">${activitiesHtml}</div>`;
+
     lucide.createIcons();
     setupItemClicks();
     observeAnimations(container);
+
+    activityLenis = new Lenis({
+        wrapper: container, 
+        content: container.querySelector('.activity-scroll-content'),
+        eventsTarget: container,
+        smoothWheel: true,
+        lerp: 0.1 
+    });
 };
 
 const loadProjects = async () => {
@@ -175,14 +201,13 @@ const loadProjects = async () => {
 
     const container = document.getElementById("projects-list");
     if (!container) return;
-    container.innerHTML = "";
 
-    projects.forEach(project => {
+    const projectsHtml = projects.map(project => {
         const tagsHtml = (project.tags || []).map(tag => `
             <div class="project-tag" style="background: ${tag.color}; color: white;">${tag.name}</div>
         `).join("");
 
-        container.insertAdjacentHTML("beforeend", `
+        return `
             <div data-animate-2>
                 <div class="project-item vflex gap-2">
                     <div class="project-title">
@@ -192,11 +217,21 @@ const loadProjects = async () => {
                     <div class="project-tags">${tagsHtml}</div>
                 </div>
             </div>
-        `);
-    });
+        `;
+    }).join("");
+
+    container.innerHTML = `<div class="projects-scroll-content">${projectsHtml}</div>`;
 
     lucide.createIcons();
     observeAnimations(container);
+
+    projectsLenis = new Lenis({
+        wrapper: container,
+        content: container.querySelector('.projects-scroll-content'),
+        eventsTarget: container,
+        smoothWheel: true,
+        syncTouch: true
+    });
 }
 
 loadActivities();
