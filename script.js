@@ -12,6 +12,7 @@ const ANIMATE_CONFIG = {
     'default': { stepMs: 100 }, 
     '1': { stepMs: 50 },        
     '2': { stepMs: 150 },        
+    '4': { stepMs: 80, initialDelay: 500 }
 };
 
 const entryQueues = {};
@@ -35,8 +36,11 @@ const scrollObserver = new IntersectionObserver((entries) => {
                     queueTimers[groupKey] = null;
                     
                     const stepMs = ANIMATE_CONFIG[groupKey]?.stepMs || 100;
+                    const initialDelay = ANIMATE_CONFIG[groupKey]?.initialDelay || 0;
+
                     items.forEach((itemEl, index) => {
-                        itemEl.style.transitionDelay = `${index * stepMs}ms`;
+                        itemEl.style.transitionDelay = `${initialDelay + (index * stepMs)}ms`; 
+                        
                         requestAnimationFrame(() => {
                             itemEl.classList.remove('animated-out');
                             itemEl.classList.add('animated-in');
@@ -69,14 +73,18 @@ const performExitAnimation = (container, callback) => {
     }
 
     visibleItems.reverse().forEach((el, index) => {
-        el.style.transitionDelay = `${index * 30}ms`;
+        const staggerDelay = Math.min(index * 10, 150); 
+        el.style.transitionDelay = `${staggerDelay}ms`;
+        
         requestAnimationFrame(() => {
             el.classList.remove('animated-in');
             el.classList.add('animated-out');
         });
     });
 
-    const maxWaitTime = (visibleItems.length - 1) * 30 + 400;
+    const maxStagger = Math.min((visibleItems.length - 1) * 10, 150);
+    const maxWaitTime = maxStagger + 300; 
+    
     setTimeout(callback, maxWaitTime);
 };
 
@@ -150,9 +158,11 @@ function raf(time) {
 }
 requestAnimationFrame(raf);
 
+let activities = [];
+
 const loadActivities = async () => {
     const res = await fetch('activities.json');
-    const activities = await res.json();
+    activities = await res.json();
 
     const container = document.getElementById('activity-list');
     if (!container) return;
@@ -236,7 +246,7 @@ const setupItemClicks = () => {
     items.forEach(item => {
         item.addEventListener('click', () => {
             const id = item.dataset.id;
-            const data = ACTIVITIES.find(a => a.id === id);
+            const data = activities.find(a => a.id === id);
             if (!data) return;
             openDynamicScene(data);
         });
@@ -266,6 +276,12 @@ const switchScene = (currentId, nextId) => {
         next.classList.add('active');
         next.classList.add('enter');
         
+        const animatedElements = next.querySelectorAll('[data-animate], [data-animate-1], [data-animate-2], [data-animate-3], [data-animate-4], [data-animate-5]');
+        animatedElements.forEach(el => {
+            scrollObserver.unobserve(el);
+            scrollObserver.observe(el);
+        });
+        
         setTimeout(() => {
             next.classList.remove('enter');
         }, 400);
@@ -293,7 +309,7 @@ const openDynamicScene = (data) => {
     newScene.innerHTML = `
         <div class="container">
             <div class="header" data-animate-1>
-                <i data-lucide="${data.icon}" class="icon"></i>
+                <i data-lucide="${data.icon}" class="title-icon icon"></i>
                 <h1>${details.title} <span class="sub-heading">[${data.type}]</span></h1>
                 <div class="divider"></div>
             </div>

@@ -9,7 +9,7 @@
         "details": {
             "title": "Portfolio",
             "attachments": [],
-            "content": "<div class=\"para bold\" data-animate>A minimal, interaction-focused developer portfolio.</div><div class=\"para\" data-animate>Built with <span class=\"bold\">HTML, CSS, and JavaScript</span>, this portfolio features a clean design and smooth animations. It showcases my projects, work experience, and achievements in an engaging way.</div><div class=\"para\" data-animate>I took inspiration from games like <span class=\"bold\">Dead Space 2</span> and <span class=\"bold\">Tom Clancy’s The Division</span>.</div><div class=\"para\" data-animate>I’m really into microinteractions—small, subtle details that make interfaces feel alive without being distracting.</div>",
+            "content": "<div class=\"para bold\" data-animate-4>A minimal, interaction-focused developer portfolio.</div><div class=\"para\" data-animate-4>Built with <span class=\"bold\">HTML, CSS, and JavaScript</span>, this portfolio features a clean design and smooth animations. It showcases my projects, work experience, and achievements in an engaging way.</div><div class=\"para\" data-animate-4>I took inspiration from games like <span class=\"bold\">Dead Space 2</span> and <span class=\"bold\">Tom Clancy’s The Division</span>.</div><div class=\"para\" data-animate-4>I’m really into microinteractions—small, subtle details that make interfaces feel alive without being distracting.</div>",
             "images": []
         }
     },
