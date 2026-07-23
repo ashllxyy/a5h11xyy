@@ -275,6 +275,7 @@ h1 {
   max-height: 80vh; 
   overflow-y: auto;
   overflow-x: hidden;
+  padding-right: 10px;
   overscroll-behavior: contain;
 }
 

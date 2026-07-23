@@ -89,12 +89,6 @@ const switchTabContent = (currentId, nextId) => {
     performExitAnimation(current, () => {
         current.style.display = 'none'; 
         next.style.display = 'block'; 
-
-        if (nextId === 'tab-activities' && activityLenis) {
-            activityLenis.resize();
-        } else if (nextId === 'tab-projects' && projectsLenis) {
-            projectsLenis.resize();
-        }
     });
 };
 
