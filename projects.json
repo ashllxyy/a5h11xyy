@@ -47,7 +47,7 @@
     ]
   },
   {
-    "title": "openai's clip",
+    "title": "lynx",
     "tags": [
       {
         "name": "personal",
@@ -56,28 +56,15 @@
       {
         "name": "deep-learning",
         "color": "#03553b"
+      },
+      {
+        "name": "app-dev",
+        "color": "#03553b"
       }
     ]
   },
   {
-    "title": "dotfiles",
-    "tags": [
-    {
-      "name": "personal",
-      "color": "#2d4282"
-    },
-    {
-      "name": "lua",
-      "color": "#6a1b98"
-    },
-    {
-      "name": "linux",
-      "color": "#111111"
-    }
-  ]
-  },
-  {
-    "title": "nfpay",
+    "title": "jeevan healthcare",
     "tags": [
       {
         "name": "freelance",
@@ -88,25 +75,25 @@
         "color": "#03553b"
       },
       {
-        "name": "flutter",
-        "color": "#1b7398"
+        "name": "react-native",
+        "color": "#985e1b"
       }
     ]
   },
   {
-    "title": "jeevan healthcare",
+    "title": "photocobra",
     "tags": [
     {
       "name": "freelance",
       "color": "#6d2c2c"
     },
     {
-      "name": "app-dev",
+      "name": "web-dev",
       "color": "#03553b"
     },
     {
-      "name": "react-native",
-      "color": "#985e1b"
+      "name": "backend",
+      "color": "#03553b"
     }
   ]
   },

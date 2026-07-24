@@ -50,6 +50,25 @@ h1 {
   text-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
+.header {
+  flex: none;
+}
+
+.main-wrap {
+  flex: 1;
+  min-height: 0;
+}
+
+.top-half {
+  flex: 7;
+  min-height: 0;
+}
+
+.bottom-half {
+  min-height: 0;
+  flex: 3;
+}
+
 .sub-heading {
   font-size: 0.6rem;
   color: rgb(118, 118, 118);
@@ -84,8 +103,7 @@ h1 {
 .tab-content {
   flex: 1;
   min-height: 0;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .scroll-settings {
@@ -111,7 +129,7 @@ h1 {
   background: #666;
 }
 
-.blogs > .tabs {
+.bottom-half > .tabs {
   margin-top: 10px;
   margin-bottom: 20px;
 }
@@ -163,7 +181,8 @@ h1 {
 
 .container {
   height: 70vh;
-  width: calc(min(100vw - 96px, 800px));
+  aspect-ratio: 16 / 10;
+  max-width: 80vw;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -269,7 +288,21 @@ h1 {
   height: max-content;
 }
 
-#activity-list, #projects-list {
+.blogs-scroll-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: max-content;
+}
+
+.videos-scroll-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: max-content;
+}
+
+#activity-list, #projects-list, #experience-list, #blogs-list, #videos-list, #about-list, #ethos-list {
   flex: 1 1 100%;
   height: 100%;
   max-height: 80vh; 

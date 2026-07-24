@@ -1,0 +1,39 @@
+[
+  {
+    "id": "video-1",
+    "title": "How AI Coding Agents Are Rewriting the Dev Workflow",
+    "date": "Jul 10, 2026",
+    "duration": "12:45",
+    "icon": "youtube",
+    "youtubeId": "dQw4w9WgXcQ",
+    "youtubeUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "tags": [
+      { "name": "AI Tech", "color": "#ef4444" },
+      { "name": "Dev", "color": "#3b82f6" }
+    ]
+  },
+  {
+    "id": "video-2",
+    "title": "Creating Smooth 3D Card Parallax with Atropos.js",
+    "date": "Jun 02, 2026",
+    "duration": "08:15",
+    "icon": "play-circle",
+    "youtubeId": "dQw4w9WgXcQ",
+    "youtubeUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "tags": [
+      { "name": "Tutorial", "color": "#f59e0b" }
+    ]
+  },
+  {
+    "id": "video-3",
+    "title": "Behind the Scenes: Building My Minimalist Portfolio",
+    "date": "May 18, 2026",
+    "duration": "15:30",
+    "icon": "video",
+    "youtubeId": "dQw4w9WgXcQ",
+    "youtubeUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "tags": [
+      { "name": "Vlog", "color": "#10b981" }
+    ]
+  }
+]

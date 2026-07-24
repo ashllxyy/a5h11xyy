@@ -150,10 +150,20 @@ allTabGroups.forEach(tabsContainer => {
 
 let activityLenis;
 let projectsLenis;
+let timelineLenis;
+let blogsLenis;
+let videosLenis;
+let aboutLenis;
+let ethosLenis;
 
 function raf(time) {
     if (activityLenis) activityLenis.raf(time);
     if (projectsLenis) projectsLenis.raf(time);
+    if (timelineLenis) timelineLenis.raf(time);
+    if (blogsLenis) blogsLenis.raf(time);
+    if (videosLenis) videosLenis.raf(time);
+    if (aboutLenis) aboutLenis.raf(time);
+    if (ethosLenis) ethosLenis.raf(time);
     requestAnimationFrame(raf);
 }
 requestAnimationFrame(raf);
@@ -238,8 +248,136 @@ const loadProjects = async () => {
     });
 }
 
+
+const loadTimeline = async () => {
+    const response = await fetch("timeline.json"); 
+    const timelineData = await response.json();
+
+    const container = document.getElementById("timeline-list");
+    if (!container) return;
+
+    // to do aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
+    lucide.createIcons();
+    observeAnimations(container);
+
+    timelineLenis = new Lenis({
+        wrapper: container,
+        content: container.querySelector('.timeline-scroll-content'), // adjust if needed
+        eventsTarget: container,
+        smoothWheel: true,
+        syncTouch: true
+    });
+}
+
+const loadBlogs = async () => {
+    try {
+        const res = await fetch('blogs.json');
+        const blogs = await res.json();
+
+        const container = document.getElementById('blogs-list');
+        if (!container) return;
+
+        const blogsHtml = blogs.map(blog => `
+            <div data-animate-3>
+                <div class="project-item vflex gap-2">
+                    <div class="project-title">
+                        <i data-lucide="${blog.icon || 'book-open'}" class="content-icon"></i>
+                        <span>${blog.title}</span>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+
+        container.innerHTML = `<div class="blogs-scroll-content">${blogsHtml}</div>`;
+
+        lucide.createIcons();
+        observeAnimations(container);
+
+        blogsLenis = new Lenis({
+            wrapper: container,
+            content: container.querySelector('.blogs-scroll-content'),
+            eventsTarget: container,
+            smoothWheel: true,
+            syncTouch: true
+        });
+    } catch (error) {
+        console.error('Error loading blogs:', error);
+    }
+};
+
+const loadVideos = async () => {
+    try {
+        const res = await fetch('videos.json');
+        const videos = await res.json();
+
+        const container = document.getElementById('videos-list');
+        if (!container) return;
+
+        const videosHtml = videos.map(video => {
+            const tagsHtml = (video.tags || []).map(tag => `
+                <div class="project-tag" style="background: ${tag.color}; color: white;">${tag.name}</div>
+            `).join('');
+
+            return `
+                <div data-animate-3>
+                    <a href="${video.youtubeUrl}" target="_blank" class="project-item vflex gap-2">
+                        <div class="project-title hflex between">
+                            <span class="hflex align-center gap-2">
+                                <i data-lucide="${video.icon || 'youtube'}" class="content-icon"></i>
+                                <span>${video.title}</span>
+                            </span>
+                            <span class="secondary date-text">${video.duration}</span>
+                        </div>
+                        <div class="project-tags">${tagsHtml}</div>
+                    </a>
+                </div>
+            `;
+        }).join('');
+
+        // Wrap with scroll content container for Lenis
+        container.innerHTML = `<div class="videos-scroll-content">${videosHtml}</div>`;
+
+        lucide.createIcons();
+        observeAnimations(container);
+
+        videosLenis = new Lenis({
+            wrapper: container,
+            content: container.querySelector('.videos-scroll-content'),
+            eventsTarget: container,
+            smoothWheel: true,
+            syncTouch: true
+        });
+    } catch (error) {
+        console.error('Error loading videos:', error);
+    }
+};
+
+const aboutContainer = document.getElementById('about-list');
+if (aboutContainer) {
+    aboutLenis = new Lenis({
+        wrapper: aboutContainer,
+        content: aboutContainer, 
+        eventsTarget: aboutContainer,
+        smoothWheel: true
+    });
+}
+
+const ethosContainer = document.getElementById('ethos-list');
+if (ethosContainer) {
+    ethosLenis = new Lenis({
+        wrapper: ethosContainer,
+        content: ethosContainer,
+        eventsTarget: ethosContainer,
+        smoothWheel: true
+    });
+}
+
 loadActivities();
 loadProjects();
+loadTimeline();
+loadBlogs();
+loadVideos();
 
 const setupItemClicks = () => {
     const items = document.querySelectorAll('.activity-item');
